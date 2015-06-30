@@ -2,6 +2,8 @@
  * Device Model
  */
 var device = {
+  schema: true,
+  connection: '',
   attributes: {
     accessKey: { type: 'alphanumericdashed', require: true, unique: true },
     accessSecretKey: { type: 'alphanumericdashed', require: true },

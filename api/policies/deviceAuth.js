@@ -67,7 +67,8 @@ module.exports = function (req, res, next) {
       return res.status(401).send({error: 'Authentication failed'});
     }
 
-    req.accessKey = key;
+    req.accessKey = device.accesskey;
+    req.deivceState = device.state;
     var stringToSign = req.method +
                        req.headers['Content-MD5'] +
                        req.headers['Content-Type'] +
