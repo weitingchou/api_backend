@@ -22,6 +22,8 @@
     "rc": "~0.5.0",
     "sails": "~0.11.0",
     "sails-disk": "~0.10.0",
+    "sails-mongo": "~0.11.2",
+    "body-parser": "~1.13.2",
     "mocha": "~2.2.5",
     "should": "~7.0.1",
     "supertest": "1.0.1",
@@ -30,7 +32,7 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "test": "NODE_ENV=test mocha "
+    "test": "NODE_ENV=test mocha -R spec -b --recursive"
   },
   "main": "app.js",
   "repository": {
@@ -38,5 +40,8 @@
     "url": "git://github.com/richchou/helios-api.git"
   },
   "author": "richchou",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "node-uuid": "^1.4.3"
+  }
 }

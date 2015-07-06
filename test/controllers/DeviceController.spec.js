@@ -22,7 +22,7 @@ describe('DeviceController', function() {
   describe('register with a valid Authorization header', function() {
 
     function getAuth(apikey, secret, method, contentType, date, reqUri) {
-      var stringToSign = method+"\n"+contentMD5+"\n"+contentType+"\n"+date"\n"+reqUri;
+      var stringToSign = method+"\n"+contentMD5+"\n"+contentType+"\n"+date+"\n"+reqUri;
       var signature = new Buffer(crypto.createHmac('sha256', secret).update(stringToSign.toString('utf8')).digest('hex')).toString('base64');
       return 'TopPano'+' '+apikey+':'+signature;
     }

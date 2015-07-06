@@ -1,4 +1,5 @@
-var Sails = require('sails');
+var Sails = require('sails'),
+    Barrels = require('barrels');
 
 // Global before hook
 before(function(done) {
@@ -8,12 +9,17 @@ before(function(done) {
       level: 'error'
     },
     models: {
-      connection: 'test',
+      connection: 'testMongodbServer',
       migrate: 'drop'
     }
   }, function(err, server) {
     if (err) return done(err);
-    done(null, server);
+
+    var barrels = new Barrels();
+    barrels.populate(function(err) {
+      if (err) { return done(err); }
+      done(null, server);
+    });
   });
 });
 

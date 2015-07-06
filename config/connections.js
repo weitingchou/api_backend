@@ -34,6 +34,18 @@ module.exports.connections = {
 
   /***************************************************************************
   *                                                                          *
+  * Test database.                                                           *
+  * Run: npm install sails-mongo                                             *
+  *                                                                          *
+  ***************************************************************************/
+  testMongodbServer: {
+    adapter: 'sails-mongo',
+    host: 'localhost',
+    port: 27017
+  },
+
+  /***************************************************************************
+  *                                                                          *
   * MySQL is the world's most popular relational database.                   *
   * http://en.wikipedia.org/wiki/MySQL                                       *
   *                                                                          *
