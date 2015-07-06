@@ -12,7 +12,6 @@ module.exports = function (req, res, next) {
    * Signature = Base64( HMAC-SHA1( DeviceSecretAccessKeyID, UTF-8-Encoding-Of( StringToSign ) ) );
    *
    * StringToSign = HTTP-Verb + "\n" +
-   *                Content-MD5 + "\n" +
    *                Content-Type + "\n" +
    *                Date + "\n" +
    *                HTTP-Request-URI;
@@ -69,10 +68,9 @@ module.exports = function (req, res, next) {
 
     req.accessKey = device.accesskey;
     req.deivceState = device.state;
-    var stringToSign = req.method +
-                       req.headers['Content-MD5'] +
-                       req.headers['Content-Type'] +
-                       req.headers['Date'] +
+    var stringToSign = req.method + "\n" +
+                       req.headers['Content-Type'] + "\n" +
+                       req.headers['Date'] + "\n" +
                        req.originalUrl;
 
     var hmac = crypto.createHmac('sha256', device.accessSecretKey).update(stringToSign.toString('utf8'));
