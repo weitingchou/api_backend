@@ -6,6 +6,7 @@ function decodeBase64 (str) {
 
 module.exports = function (req, res, next) {
 
+  sails.log.info('Authenticating');
   /**
    * Authorization = "TopPano" + " " + DeviceAccessKeyID + ":" + Signature;
    *
@@ -26,7 +27,7 @@ module.exports = function (req, res, next) {
    * token68     = 1*( ALPHA / DIGIT / "-" / "." / "_" / "~" / "+" / "/"  ) *"="
    * @private
    **/
-  var credentialsRegExp = /^ *(?:[TopPano]) +([A-Za-z0-9\-\._~\+\/]+=*) *$/;
+  var credentialsRegExp = /^ *(?:TopPano) +([A-Za-z0-9\-\.:_~\+\/]+=*) *$/;
 
   /**
    * RegExp for auth device key and signature
@@ -38,7 +39,7 @@ module.exports = function (req, res, next) {
    **/
   var keySignRegExp = /^([^:]*):(.*)$/;
 
-  var header = req.headers.authorization,
+  var header = req.get('authorization'),
       match = credentialsRegExp.exec(header || '');
 
   if (!match) {
@@ -46,7 +47,7 @@ module.exports = function (req, res, next) {
     return res.status(401).send({error: 'Authentication failed'});
   }
 
-  var keySign = keySignRegExp.exec(decodeBase64(match[1]));
+  var keySign = keySignRegExp.exec(match[1]);
 
   if (!keySign) {
     sails.log.error('Invalid key-signature pair');
@@ -54,7 +55,7 @@ module.exports = function (req, res, next) {
   }
 
   var key = keySign[1],
-      signature = keySign[2];
+      signature = decodeBase64(keySign[2]);
 
   Device.findOne({accessKey: key}, function(err, device) {
     if (err) {
@@ -66,15 +67,16 @@ module.exports = function (req, res, next) {
       return res.status(401).send({error: 'Authentication failed'});
     }
 
+    req.deviceState = device.state;
     req.accessKey = device.accesskey;
-    req.deivceState = device.state;
     var stringToSign = req.method + "\n" +
-                       req.headers['Content-Type'] + "\n" +
-                       req.headers['Date'] + "\n" +
+                       req.get('content-type') + "\n" +
+                       req.get('date') + "\n" +
                        req.originalUrl;
 
     var hmac = crypto.createHmac('sha256', device.accessSecretKey).update(stringToSign.toString('utf8'));
     if (hmac.digest('hex') !== signature) {
+      sails.log.error('Invalid signature');
       return res.status(401).send({error: 'Authentication failed'});
     }
 

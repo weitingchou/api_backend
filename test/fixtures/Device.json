@@ -2,5 +2,12 @@
   {
     "accessKey": "d811d7d0-89dc-4186-907a-93587701b81c",
     "accessSecretKey": "ba727c22-41d4-4fbf-863b-f4435743dfe3"
+  },
+  {
+    "accessKey": "b55262f2-5881-498d-a517-26aca34b9d95",
+    "accessSecretKey": "69c07080-6296-4bfe-bcfa-280fbca391f9",
+    "state": "active",
+    "serialNum": "123456",
+    "firmwareVersion": "1.0.0"
   }
 ]

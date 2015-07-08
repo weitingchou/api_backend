@@ -9,12 +9,11 @@ before(function(done) {
       level: 'error'
     },
     models: {
-      connection: 'testMongodbServer',
+      connection: 'test',
       migrate: 'drop'
     }
   }, function(err, server) {
     if (err) return done(err);
-
     var barrels = new Barrels();
     barrels.populate(function(err) {
       if (err) { return done(err); }

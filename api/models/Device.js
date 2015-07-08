@@ -3,13 +3,12 @@
  */
 var device = {
   schema: true,
-  connection: '',
   attributes: {
-    accessKey: { type: 'alphanumericdashed', require: true, unique: true },
-    accessSecretKey: { type: 'alphanumericdashed', require: true },
+    accessKey: { type: 'alphanumericdashed', required: true, unique: true },
+    accessSecretKey: { type: 'alphanumericdashed', required: true },
     state: { type: 'string', enum: ['pending', 'active'], defaultsTo: 'pending' },
     serialNum: { type: 'string' },
-    firmwareVersoin: { type: 'string' }
+    firmwareVersion: { type: 'string' }
   }
 };
 

@@ -9,6 +9,12 @@ module.exports = {
 
   register: function (req, res) {
 
+    if (req.deviceState !== 'pending') {
+      var errmsg = 'The access key has already been registered';
+      sails.log.error(errmsg);
+      return res.status(409).send({error: errmsg});
+    }
+
     Device.update({accessKey: req.accessKey}, {
       state: 'active',
       serialNum: req.body.serialNum,
