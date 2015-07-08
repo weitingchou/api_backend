@@ -6,16 +6,20 @@
  */
 
 module.exports = {
-	
 
 
   /**
    * `PhotometaController.get()`
    */
   get: function (req, res) {
-    return res.json({
-      todo: 'get() is not implemented yet!'
-    });
+    var ll = req.query.ll || undefined,
+        panoid = req.query.panoid || undefined;
+    if (ll) {
+      PhotoMeta.find()
+    }
+    else if (panoid) {
+
+    }
   }
 };
 

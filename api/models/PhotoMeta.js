@@ -26,6 +26,8 @@ var photometa = {
     }
   },
   attributes: {
+    latlng: { type: 'string' },
+    address: { type: 'string' },
     location: {
       type: 'json',
       locationValid: true
@@ -39,3 +41,5 @@ var photometa = {
     neighbors: { type: 'array', neighborValid: true }
   }
 };
+
+module.exports = photometa;
