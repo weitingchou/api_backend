@@ -11,7 +11,7 @@ var device = {
     firmwareVersion: { type: 'string' },
 
     // Associate every device with one, and only one, user.
-    user: { model: 'User', required: true }
+    //user: { model: 'User', required: true }
   }
 };
 

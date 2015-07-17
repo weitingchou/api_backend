@@ -50,6 +50,6 @@ module.exports.policies = {
 	// }
 
   DeviceController: {
-    '*': 'deviceAuth'
+    '/device/*': 'deviceAuth'
   }
 };

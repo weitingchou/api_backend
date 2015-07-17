@@ -34,4 +34,5 @@ module.exports.routes = {
 
   'post /device/register': 'DeviceController.register',
 
+  'get /user/device/register': 'UserDeviceController.register'
 };
