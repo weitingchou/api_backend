@@ -34,5 +34,12 @@ module.exports.routes = {
 
   'post /device/register': 'DeviceController.register',
 
-  'get /user/device/register': 'UserDeviceController.register'
+  'get /user/device/register': 'UserDeviceController.register',
+
+  'get /users/:userid/maps': 'PhotometaController.getMetadataList',
+
+  'get /maps/photometa': 'PhotometaController.getMetadata',
+
+  'post /maps/photometa': 'PhotometaController.postMetadata'
+
 };

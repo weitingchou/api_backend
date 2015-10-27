@@ -18,7 +18,10 @@ module.exports = {
    ***************************************************************************/
 
   models: {
-     connection: 'localMongoDB'
-  }
+     connection: 'localDiskDb',
+     //connection: 'testMongodbServer',
+     migrate: 'drop'
+  },
+  port: 6687
 
 };

@@ -1,45 +1,45 @@
 /**
  * PhotoMeta Model
  */
-var photometa = {
+var PhotoMeta = {
   schema: true,
   types: {
+    /**
+     * {
+     *   latlng: { type: 'string' },
+     *   address: { type: 'string' }
+     * }
     locationValid: function(location) {
-      /**
-       * {
-       *   latlng: { type: 'string' },
-       *   address: { type: 'string' }
-       * }
-       */
       return (typeof location.latlng === 'string') &&
              (typeof location.address === 'string');
     },
+    */
+    /**
+     * {
+     *   panoid: { type: 'alphanumericdashed' },
+     *   direction: { type: 'string' }
+     * }
     neighborValid: function(neighbor) {
-      /**
-       * {
-       *   panoid: { type: 'alphanumericdashed' },
-       *   direction: { type: 'string' }
-       * }
-       */
       return (typeof neighbor.panoid === 'string') &&
              (typeof neighbor.direction === 'string');
     }
+    */
   },
   attributes: {
-    latlng: { type: 'string' },
+    userid: { type: 'alphanumericdashed', required: true },
+    geoLat: { type: 'string' },
+    geoLng: { type: 'string' },
     address: { type: 'string' },
-    location: {
-      type: 'json',
-      locationValid: true
-    },
+    heading: { type: 'float' },
     panoid: {
       type: 'alphanumericdashed',
       required: true,
       unique: true
     },
     isEntry: { type: 'boolean', required: true },
-    neighbors: { type: 'array', neighborValid: true }
+    //neighbors: { type: 'array', neighborValid: true }
+    transition: { type: 'array' }
   }
 };
 
-module.exports = photometa;
+module.exports = PhotoMeta;
