@@ -13,8 +13,8 @@ var mapInfo = [
 				"lng": -60,
 				"size": 22,
         "rotateX": 95,
-        "rotateY": 0,
-        "rotateZ": -100,
+        "rotateY": 100,
+        "rotateZ": 0,
         "objSphereRadius": 90,
 				"nextID": "00000001"
 			}
@@ -31,8 +31,8 @@ var mapInfo = [
 				"lng": 32.7,
 				"size": 30,
         "rotateX": 90,
-        "rotateY": 0,
-        "rotateZ": -65,
+        "rotateY": 65,
+        "rotateZ": 0,
         "objSphereRadius": 90,
 				"nextID": "00000000"
 			},
@@ -41,8 +41,8 @@ var mapInfo = [
 				"lng": 274.5,
 				"size": 30,
         "rotateX": 90,
-        "rotateY": 0,
-        "rotateZ": 189,
+        "rotateY": 189,
+        "rotateZ": 0,
         "objSphereRadius": 90,
 				"nextID": "00000002"
 			}
@@ -59,8 +59,8 @@ var mapInfo = [
 				"lng": 78,
 				"size": 60,
         "rotateX": 95,
-        "rotateY": 1,
-        "rotateZ": -25,
+        "rotateY": -25,
+        "rotateZ": 1,
         "objSphereRadius": 90,
 				"nextID": "00000001"
 			},
@@ -69,8 +69,8 @@ var mapInfo = [
 				"lng": 268.9,
 				"size": 30,
         "rotateX": 90,
-        "rotateY": 0,
-        "rotateZ": 180,
+        "rotateY": -180,
+        "rotateZ": 0,
         "objSphereRadius": 90,
 				"nextID": "00000003"
 			}
@@ -87,8 +87,8 @@ var mapInfo = [
 				"lng": 85.7,
 				"size": 30,
         "rotateX": 90,
-        "rotateY": 1,
-        "rotateZ": -10,
+        "rotateY": 10,
+        "rotateZ": 1,
         "objSphereRadius": 90,
 				"nextID": "00000002"
 			}
@@ -98,7 +98,8 @@ var mapInfo = [
 
 request({
   method: 'POST',
-  uri: 'http://localhost:6686/auth/provider/notoken',
+  //uri: 'http://localhost:6686/auth/provider/notoken',
+  uri: 'http://helios-api-0.cloudapp.net:6689/auth/provider/notoken',
   headers: {
     'Content-Type': 'application/json'
   },
@@ -119,7 +120,8 @@ function(err, response, body) {
     photometa.userid = userid;
     request({
       method: 'POST',
-      uri: 'http://localhost:6687/maps/photometa',
+      //uri: 'http://localhost:6687/maps/photometa',
+      uri: 'http://helios-api-0.cloudapp.net:6687/maps/photometa',
       headers: {
         'Content-Type': 'application/json'
       },

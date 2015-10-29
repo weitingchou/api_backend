@@ -26,7 +26,8 @@ var PhotoMeta = {
     */
   },
   attributes: {
-    userid: { type: 'alphanumericdashed', required: true },
+    userid: { type: 'string', required: true },
+    mapid: { type: 'string' },
     geoLat: { type: 'string' },
     geoLng: { type: 'string' },
     address: { type: 'string' },
